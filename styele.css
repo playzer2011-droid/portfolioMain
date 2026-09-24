@@ -1268,3 +1268,148 @@ new colors #s1:checked ~ .cards #slide6,
     width: 320px;
   }
 }
+
+
+/* ==========================================
+   1. HERO BO'LIMI ANIMATSIYALARI
+   ========================================== */
+
+/* Rasmlar va shakllar ravon suzishi uchun Keyframes */
+@keyframes float {
+  0% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(1deg); }
+  100% { transform: translateY(0px) rotate(0deg); }
+}
+
+@keyframes pulseGlow {
+  0% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.8; }
+}
+
+/* Asosiy rasm va ramka harakati */
+.hero__frame {
+  animation: float 5s ease-in-out infinite;
+}
+
+/* Orqa fondagi shakllarning harakati */
+.hero__shape--1 {
+  animation: pulseGlow 4s ease-in-out infinite alternate;
+}
+
+.hero__shape--2 {
+  animation: float 6s ease-in-out infinite reverse;
+}
+
+/* Badge (belgilar) uchun kichik suzish effecti */
+.hero__badge--1 {
+  animation: float 4s ease-in-out 0.5s infinite;
+}
+
+.hero__badge--2 {
+  animation: float 4.5s ease-in-out 1s infinite;
+}
+
+
+/* ==========================================
+   2. TUGMALAR VA LINKLAR HOVER EFFEKTI
+   ========================================== */
+
+/* Asosiy tugmalar bosilganda va yaqinlashtirganda */
+.btn {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), 
+              box-shadow 0.3s ease, 
+              background-color 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+  transform: translateY(-1px) scale(0.98);
+}
+
+/* Tugma ichidagi ko'rsatkich (strelka) harakati */
+.btn .arrow {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(6px);
+}
+
+
+/* ==========================================
+   3. KARTALAR (PROJECTS, FAMILY, ABOUT) HOVER
+   ========================================== */
+
+/* Loyihalar va Oila kartalari siljishi */
+.proj-card,
+.fam-card,
+.about__photo {
+  transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), 
+              box-shadow 0.4s ease;
+}
+
+.proj-card:hover,
+.fam-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* Kartalar ichidagi rasmni biroz kattalashtirish */
+.proj-card__img img,
+.fam-card__img img,
+.about__photo img {
+  transition: transform 0.5s ease;
+}
+
+.proj-card:hover .proj-card__img img,
+.fam-card:hover .fam-card__img img {
+  transform: scale(1.05);
+}
+
+
+/* ==========================================
+   4. MARQUEE (YURUVCHI MATN) ANIMATSIYASI
+   ========================================== */
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee__track {
+  display: flex;
+  white-space: nowrap;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+  animation-play-state: paused; /* Sichqoncha olib borilganda to'xtaydi */
+}
+
+
+/* ==========================================
+   5. SAHIFA YUKLANGANDA CHIQISH (FADE-IN)
+   ========================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero__copy,
+.about__grid,
+.proj-grid {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
